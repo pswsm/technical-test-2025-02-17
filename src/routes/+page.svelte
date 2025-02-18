@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Device from '$lib/components/Device.svelte';
 	import type { PageProps } from './$types';
 
 	let { data }: PageProps = $props();
@@ -7,12 +8,13 @@
 <svelte:head>
 	<title>AlexPhone</title>
 </svelte:head>
-<h1>Welcome to SvelteKit</h1>
 <section id="main">
-	{#await data.skus}
+	{#await data.devices}
 		<p>loading skus...</p>
-	{:then skus}
-		{@debug skus}
+	{:then devices}
+		{#each devices as device}
+			<Device {device} />
+		{/each}
 		<p>skus loaded</p>
 	{/await}
 </section>
