@@ -1,5 +1,6 @@
 <script lang="ts">
 	import Device from '$lib/components/Device.svelte';
+	import Grid from '$lib/components/Grid.svelte';
 	import type { PageProps } from './$types';
 
 	let { data }: PageProps = $props();
@@ -8,13 +9,14 @@
 <svelte:head>
 	<title>AlexPhone</title>
 </svelte:head>
-<section id="main">
+<section id="main" class="mx-auto w-2/3">
 	{#await data.devices}
 		<p>loading skus...</p>
 	{:then devices}
-		{#each devices as device}
-			<Device {device} />
-		{/each}
-		<p>skus loaded</p>
+		<Grid>
+			{#each devices as device}
+				<Device {device} />
+			{/each}
+		</Grid>
 	{/await}
 </section>

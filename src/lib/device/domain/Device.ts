@@ -4,6 +4,7 @@ import type { SkuId } from './value-objects/SkuId';
 import type { Specs } from './Specs';
 import type { MarketplaceInformation } from './MarketplaceInformation';
 import type { ImageLink } from './value-objects/ImageLink';
+import type { Price } from './value-objects/Price';
 
 export class Device {
 	constructor(
@@ -24,5 +25,9 @@ export class Device {
 
 	public getDescription(): Description {
 		return this.description;
+	}
+
+	public getPrice(): Price {
+		return this.marketplaceInformation.getPrice();
 	}
 }

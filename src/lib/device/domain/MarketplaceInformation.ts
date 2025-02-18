@@ -3,11 +3,15 @@ import type { Price } from './value-objects/Price';
 
 export class MarketplaceInformation {
 	constructor(
-		public readonly price: Price,
-		public readonly image: ImageLink
+		private readonly price: Price,
+		private readonly image: ImageLink
 	) {}
 
 	public getImage(): ImageLink {
 		return this.image;
+	}
+
+	public getPrice(): Price {
+		return this.price;
 	}
 }
