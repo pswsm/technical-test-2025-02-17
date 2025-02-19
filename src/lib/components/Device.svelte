@@ -1,7 +1,5 @@
 <script lang="ts">
 	import type { Device } from '$lib/device/domain/Device';
-	import type { Specs } from '$lib/device/domain/Specs';
-	import { DefaultTranslator } from '$lib/translation/Translator';
 	import Price from './Price.svelte';
 	import SpecList from './SpecList.svelte';
 
@@ -10,7 +8,6 @@
 	}
 
 	let { device }: Props = $props();
-	let deviceSpecs: Specs = device.getSpecs();
 </script>
 
 <a
