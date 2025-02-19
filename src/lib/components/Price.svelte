@@ -8,4 +8,4 @@
 	let { price, currency = '€' }: Props = $props();
 </script>
 
-<p>{price.valueOf()}{currency}</p>
+<p>Price: {price.valueOf()}{currency}</p>

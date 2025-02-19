@@ -35,4 +35,8 @@ export class Device {
 	public getGrade(): Grade {
 		return this.specs.grade;
 	}
+
+	public getSpecs(): Specs {
+		return this.specs;
+	}
 }
