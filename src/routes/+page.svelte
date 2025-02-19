@@ -19,7 +19,7 @@
 	{#await data.devices}
 		<p>loading skus...</p>
 	{:then devices}
-		<form bind:this={form} class="flex w-full justify-around">
+		<form bind:this={form} class="flex w-full flex-wrap justify-around">
 			<SlideFilter
 				labelText={'From'}
 				minSlider={data.minPrice}
