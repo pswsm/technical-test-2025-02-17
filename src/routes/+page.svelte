@@ -15,7 +15,7 @@
 <svelte:head>
 	<title>AlexPhone</title>
 </svelte:head>
-<section id="main" class="mx-auto w-2/3">
+<section id="main">
 	{#await data.devices}
 		<p>loading skus...</p>
 	{:then devices}

@@ -5,7 +5,7 @@
 	let { data }: PageProps = $props();
 </script>
 
-<section id="device" class="mx-auto w-2/3">
+<section id="device">
 	{#await data.device}
 		<p>loading...</p>
 	{:then device}

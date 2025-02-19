@@ -5,4 +5,6 @@
 </script>
 
 <Navbar />
-{@render children()}
+<div class="mx-auto w-2/3">
+	{@render children()}
+</div>
