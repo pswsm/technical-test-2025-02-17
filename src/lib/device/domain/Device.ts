@@ -39,4 +39,8 @@ export class Device {
 	public getSpecs(): Specs {
 		return this.specs;
 	}
+
+	public getSkuId(): SkuId {
+		return this.id;
+	}
 }
