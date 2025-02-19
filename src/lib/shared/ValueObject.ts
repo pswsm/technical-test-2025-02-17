@@ -10,4 +10,11 @@ export class ValueObject<T> {
 	public valueOf(): T {
 		return this.value;
 	}
+
+	public equals(other: ValueObject<T>): boolean {
+		if (other === null || other === undefined) {
+			return false;
+		}
+		return this.value === other.valueOf();
+	}
 }
