@@ -5,6 +5,7 @@ import type { Specs } from './Specs';
 import type { MarketplaceInformation } from './MarketplaceInformation';
 import type { ImageLink } from './value-objects/ImageLink';
 import type { Price } from './value-objects/Price';
+import type { Grade } from './value-objects/Grade';
 
 export class Device {
 	constructor(
@@ -29,5 +30,9 @@ export class Device {
 
 	public getPrice(): Price {
 		return this.marketplaceInformation.getPrice();
+	}
+
+	public getGrade(): Grade {
+		return this.specs.grade;
 	}
 }
