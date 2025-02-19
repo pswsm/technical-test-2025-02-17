@@ -3,6 +3,7 @@
 	import type { Specs } from '$lib/device/domain/Specs';
 	import { DefaultTranslator } from '$lib/translation/Translator';
 	import Price from './Price.svelte';
+	import SpecList from './SpecList.svelte';
 
 	interface Props {
 		device: Device;
@@ -12,9 +13,9 @@
 	let deviceSpecs: Specs = device.getSpecs();
 </script>
 
-<div
+<a
 	class="row-span-6 m-auto grid grid-rows-subgrid gap-y-2 rounded-lg border-2 border-white bg-white px-6 py-2"
-	id={device.getName().valueOf()}
+	href={`/device/${device.getSkuId().valueOf()}`}
 >
 	<div>
 		<img
@@ -28,12 +29,7 @@
 	</div>
 	<div>
 		<p class="font-bold">{device.getName().valueOf()}</p>
-		<ul class="list-disc">
-			Specs
-			<li class="capitalize">{deviceSpecs.storage.valueOf()}</li>
-			<li class="capitalize">{deviceSpecs.color.valueOf()}</li>
-			<li class="capitalize">{DefaultTranslator.translate(deviceSpecs.grade)}</li>
-		</ul>
+		<SpecList deviceSpecs={device.getSpecs()} />
 	</div>
 	<div>
 		<hr />
@@ -41,4 +37,4 @@
 	<div>
 		<Price price={device.getPrice()} />
 	</div>
-</div>
+</a>
