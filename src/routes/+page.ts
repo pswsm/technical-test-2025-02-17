@@ -24,6 +24,6 @@ export const load: PageLoad = async ({ fetch, url }) => {
 		maxPrice: Math.max(...prices),
 		minPrice: Math.min(...prices),
 		grades: Array.from(grades).map((grade) => new Grade(grade)),
-		visibleDevices
+		devices: params.size > 0 ? visibleDevices : devices
 	};
 };

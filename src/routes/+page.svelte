@@ -16,7 +16,7 @@
 	<title>AlexPhone</title>
 </svelte:head>
 <section id="main" class="mx-auto w-2/3">
-	{#await data.visibleDevices}
+	{#await data.devices}
 		<p>loading skus...</p>
 	{:then devices}
 		<form bind:this={form} class="flex w-full justify-around">
