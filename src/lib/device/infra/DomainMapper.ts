@@ -23,7 +23,7 @@ export class DomainMapper {
 			new Storage(apiData.storage)
 		);
 		return new Device(
-			new SkuId(apiData.id),
+			new SkuId(apiData.sku),
 			new DeviceName(apiData.name),
 			new Description(apiData.description),
 			specs,
