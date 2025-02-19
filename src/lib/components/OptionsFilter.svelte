@@ -1,4 +1,7 @@
 <script lang="ts">
+	import { StringValueObject } from '$lib/shared/StringValueObject';
+	import { DefaultTranslator } from '$lib/translation/Translator';
+
 	interface OptionsFilterProps {
 		filterName: string;
 		paramBind?: string;
@@ -15,9 +18,10 @@
 		id={filterName}
 		bind:value={paramBind}
 		onchange={() => form?.requestSubmit()}
+		class="capitalize"
 	>
 		{#each options as option}
-			<option value={option}>{option}</option>
+			<option value={option}>{DefaultTranslator.translate(new StringValueObject(option))}</option>
 		{/each}
 	</select>
 </div>
