@@ -1,10 +1,12 @@
 import { ValueObjectError } from './ValueObjectError';
 
 export class ValueObject<T> {
-	constructor(protected readonly value: T) {
+	protected readonly value: T;
+	constructor(value: T) {
 		if (value == null || value == undefined) {
 			throw new ValueObjectError('InvalidValue', 'Value cannot be null');
 		}
+		this.value = Object.freeze(value);
 	}
 
 	public valueOf(): T {

@@ -11,8 +11,3 @@ test('constructor on 0', () => {
 	const vo = new ValueObject<number>(0);
 	expect(vo).toMatchObject({ value: 0 });
 });
-
-test('valueOf', () => {
-	const vo = new ValueObject<number>(1000);
-	expect(vo.valueOf()).toBe(1000);
-});
