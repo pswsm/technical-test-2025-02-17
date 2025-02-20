@@ -33,6 +33,6 @@ export const actions = {
 			body
 		});
 
-		return { status: response.status };
+		return { status: response.ok };
 	}
 } satisfies Actions;

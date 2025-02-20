@@ -51,6 +51,16 @@ export class CartState {
 		}
 	}
 
+	public flush(): void {
+		this.state = [];
+		if (browser) {
+			localStorage.setItem(
+				CART_LOCALSTORAGE_KEY,
+				btoa(JSON.stringify(this.state.map((d) => d.toPrimitives())))
+			);
+		}
+	}
+
 	public toFormableData(): string {
 		return btoa(JSON.stringify(this.state.map((cd) => cd.getDevice().toPrimitives())));
 	}

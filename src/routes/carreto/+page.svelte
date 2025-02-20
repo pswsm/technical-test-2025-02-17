@@ -1,13 +1,17 @@
 <script lang="ts">
 	import Price from '$lib/components/Price.svelte';
+	import { UniqueId } from '$lib/shared/UniqueId';
 	import { GlobalCartState } from '../cartState.svelte';
 	import type { PageProps } from '../device/[slug]/$types';
 
 	let { form }: PageProps = $props();
+	if (form?.status) {
+		GlobalCartState.flush();
+	}
 </script>
 
 {#if form?.status}
-	<h1 class="text-9xl">Succes with status: {form.status}</h1>
+	<p class="text-l text-center">Ordered correctly! - ID: {UniqueId.new().valueOf()}</p>
 {/if}
 
 <section id="title" class="mb-4">
