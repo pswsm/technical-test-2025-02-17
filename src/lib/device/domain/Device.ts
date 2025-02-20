@@ -7,11 +7,13 @@ import type { ImageLink } from './value-objects/ImageLink';
 import type { Price } from './value-objects/Price';
 import type { Grade } from './value-objects/Grade';
 import type { PrimitiveOf } from '$lib/shared/PrimitiveOf';
+import { StringValueObject } from '$lib/shared/StringValueObject';
 
 export class Device {
 	public static fromPrimitives(primitives: PrimitiveOf<Device>): Device {
 		return new Device(
-			new SkuId(primitives.id),
+			new StringValueObject(primitives.id),
+			new SkuId(primitives.skuId),
 			new DeviceName(primitives.name),
 			new Description(primitives.description),
 			Specs.fromPrimitives(primitives.specs),
@@ -19,7 +21,8 @@ export class Device {
 		);
 	}
 	constructor(
-		private readonly id: SkuId,
+		private readonly id: StringValueObject,
+		private readonly skuId: SkuId,
 		private readonly name: DeviceName,
 		private readonly description: Description,
 		private readonly specs: Specs,
@@ -51,12 +54,17 @@ export class Device {
 	}
 
 	public getSkuId(): SkuId {
+		return this.skuId;
+	}
+
+	public getId(): StringValueObject {
 		return this.id;
 	}
 
 	public toPrimitives() {
 		return {
 			id: this.id.valueOf(),
+			skuId: this.skuId.valueOf(),
 			name: this.name.valueOf(),
 			description: this.description.valueOf(),
 			specs: this.specs.toPrimitives(),
