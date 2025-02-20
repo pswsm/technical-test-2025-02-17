@@ -1,13 +1,20 @@
 <script lang="ts">
 	import SpecList from '$lib/components/SpecList.svelte';
 	import { Device } from '$lib/device/domain/Device';
+	import toast, { Toaster } from 'svelte-french-toast';
 	import { cartState } from '../../cartState.svelte';
 	import type { PageProps } from './$types';
 
 	let { data }: PageProps = $props();
 	let device: Device = Device.fromPrimitives(data.device);
+
+	function addToCart(): void {
+		cartState.push(device);
+		toast.success('Added device to cart!');
+	}
 </script>
 
+<Toaster />
 <section id="device">
 	<div class="grid grid-cols-2 gap-x-4">
 		<div class="rounded-md border-2 border-white bg-white p-3">
@@ -24,8 +31,8 @@
 			</div>
 			<button
 				type="button"
-				class="rounded-md bg-white px-6 py-2 text-center hover:border-cyan-300"
-				onclick={() => cartState.push(device)}>Add to cart</button
+				class="rounded-md border-2 border-white bg-white px-6 py-2 text-center hover:border-cyan-300"
+				onclick={addToCart}>Add to cart</button
 			>
 		</div>
 	</div>
