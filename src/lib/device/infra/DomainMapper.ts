@@ -1,4 +1,9 @@
+import { StringValueObject } from '$lib/shared/StringValueObject';
 import type { ApiSku } from '$lib/types/ApiSku';
+import type { CreateOrderSku } from '$lib/types/CreateOrderSku';
+import type { SkuColor } from '$lib/types/SkuColor';
+import type { SkuGrade } from '$lib/types/SkuGrade';
+import type { SkuStorage } from '$lib/types/SkuStorage';
 import { Device } from '../domain/Device';
 import { MarketplaceInformation } from '../domain/MarketplaceInformation';
 import { Specs } from '../domain/Specs';
@@ -23,11 +28,22 @@ export class DomainMapper {
 			new Storage(apiData.storage)
 		);
 		return new Device(
+			new StringValueObject(apiData.id),
 			new SkuId(apiData.sku),
 			new DeviceName(apiData.name),
 			new Description(apiData.description),
 			specs,
 			marketplaceInformation
 		);
+	}
+
+	public static toOrder(device: Device): CreateOrderSku {
+		return {
+			id: device.getId().valueOf(),
+			sku: device.getSkuId().valueOf(),
+			grade: device.getGrade().valueOf() as SkuGrade,
+			color: device.getSpecs().color.valueOf() as SkuColor,
+			storage: device.getSpecs().storage.valueOf() as SkuStorage
+		};
 	}
 }
