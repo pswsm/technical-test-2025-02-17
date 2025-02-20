@@ -1,13 +1,23 @@
-import type { Description } from './value-objects/Description';
-import type { DeviceName } from './value-objects/DeviceName';
-import type { SkuId } from './value-objects/SkuId';
-import type { Specs } from './Specs';
-import type { MarketplaceInformation } from './MarketplaceInformation';
+import { Description } from './value-objects/Description';
+import { DeviceName } from './value-objects/DeviceName';
+import { SkuId } from './value-objects/SkuId';
+import { Specs } from './Specs';
+import { MarketplaceInformation } from './MarketplaceInformation';
 import type { ImageLink } from './value-objects/ImageLink';
 import type { Price } from './value-objects/Price';
 import type { Grade } from './value-objects/Grade';
+import type { PrimitiveOf } from '$lib/shared/PrimitiveOf';
 
 export class Device {
+	public static fromPrimitives(primitives: PrimitiveOf<Device>): Device {
+		return new Device(
+			new SkuId(primitives.id),
+			new DeviceName(primitives.name),
+			new Description(primitives.description),
+			Specs.fromPrimitives(primitives.specs),
+			MarketplaceInformation.fromPrimirives(primitives.marketplaceInformation)
+		);
+	}
 	constructor(
 		private readonly id: SkuId,
 		private readonly name: DeviceName,
@@ -42,5 +52,15 @@ export class Device {
 
 	public getSkuId(): SkuId {
 		return this.id;
+	}
+
+	public toPrimitives() {
+		return {
+			id: this.id.valueOf(),
+			name: this.name.valueOf(),
+			description: this.description.valueOf(),
+			specs: this.specs.toPrimitives(),
+			marketplaceInformation: this.marketplaceInformation.toPrimitives()
+		};
 	}
 }
