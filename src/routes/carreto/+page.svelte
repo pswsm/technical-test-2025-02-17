@@ -1,7 +1,14 @@
 <script lang="ts">
 	import Price from '$lib/components/Price.svelte';
 	import { GlobalCartState } from '../cartState.svelte';
+	import type { PageProps } from '../device/[slug]/$types';
+
+	let { form }: PageProps = $props();
 </script>
+
+{#if form?.status}
+	<h1 class="text-9xl">Succes with status: {form.status}</h1>
+{/if}
 
 <section id="title" class="mb-4">
 	<h1 class="text-xl font-semibold">Shopping Cart</h1>
@@ -27,4 +34,13 @@
 		</li>
 		<hr class="my-2" />
 	{/each}
+	<form method="POST" action="?/order">
+		<div class="flex">
+			<input type="text" class="hidden" name="cartState" value={GlobalCartState.toFormableData()} />
+			<button
+				class="mx-auto rounded-md border-2 border-zinc-400 px-6 py-3 transition hover:enabled:bg-zinc-400 disabled:text-zinc-400"
+				disabled={GlobalCartState.state.length > 0 ? false : true}>Order!</button
+			>
+		</div>
+	</form>
 </ul>
