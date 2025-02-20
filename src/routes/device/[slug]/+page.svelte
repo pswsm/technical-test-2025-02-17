@@ -32,7 +32,7 @@
 			</div>
 			<button
 				type="button"
-				class="rounded-md border-2 border-white bg-white px-6 py-2 text-center hover:border-cyan-300"
+				class="rounded-md border-2 border-white bg-white px-6 py-2 text-center transition hover:border-cyan-300"
 				onclick={addToCart}>Add to cart</button
 			>
 		</div>
