@@ -2,14 +2,15 @@
 	import SpecList from '$lib/components/SpecList.svelte';
 	import { Device } from '$lib/device/domain/Device';
 	import toast, { Toaster } from 'svelte-french-toast';
-	import { cartState } from '../../cartState.svelte';
 	import type { PageProps } from './$types';
+	import { GlobalCartState } from '../../cartState.svelte';
+	import { UniqueId } from '$lib/shared/UniqueId';
 
 	let { data }: PageProps = $props();
 	let device: Device = Device.fromPrimitives(data.device);
 
 	function addToCart(): void {
-		cartState.push(device);
+		GlobalCartState.push(UniqueId.new(), device);
 		toast.success('Added device to cart!');
 	}
 </script>

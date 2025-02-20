@@ -1,12 +1,30 @@
 <script lang="ts">
-	import Device from '$lib/components/Device.svelte';
-	import Grid from '$lib/components/Grid.svelte';
-	import { cartState } from '../cartState.svelte';
+	import Price from '$lib/components/Price.svelte';
+	import { GlobalCartState } from '../cartState.svelte';
 </script>
 
-<h1>Carreto</h1>
-<Grid>
-	{#each cartState as cartItem}
-		<Device device={cartItem} />
+<section id="title" class="mb-4">
+	<h1 class="text-xl font-semibold">Shopping Cart</h1>
+	<hr />
+</section>
+<ul class="list-disc">
+	{#each GlobalCartState.state as cartItem}
+		<li class="flex w-full flex-row content-center items-center justify-between">
+			<div>
+				<p>{cartItem.getDeviceName().valueOf()}</p>
+				<p>
+					{cartItem.getDeviceDescription().valueOf()} - <Price price={cartItem.getDevicePrice()} />
+				</p>
+			</div>
+			<div>
+				<button
+					class="rounded-md p-3 transition hover:bg-zinc-400"
+					type="button"
+					aria-label="remove"
+					onclick={() => GlobalCartState.remove(cartItem)}><i class="fa-solid fa-trash"></i></button
+				>
+			</div>
+		</li>
+		<hr class="my-2" />
 	{/each}
-</Grid>
+</ul>
