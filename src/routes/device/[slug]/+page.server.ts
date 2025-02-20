@@ -1,10 +1,11 @@
-import type { Device } from '$lib/device/domain/Device';
+import { Device } from '$lib/device/domain/Device';
 import { DomainMapper } from '$lib/device/infra/DomainMapper';
 import type { ApiSku } from '$lib/types/ApiSku';
 import { error } from '@sveltejs/kit';
-import type { PageLoad } from './$types';
+import type { PageServerLoad } from './$types';
+import type { PrimitiveOf } from '$lib/shared/PrimitiveOf';
 
-export const load: PageLoad = async ({ fetch, params }) => {
+export const load: PageServerLoad = async ({ fetch, params }) => {
 	const slugSku = params.slug;
 	const apiRequest = await fetch(`https://test.alexphone.com/api/v1/sku/${slugSku}`);
 
@@ -12,7 +13,7 @@ export const load: PageLoad = async ({ fetch, params }) => {
 		error(404, { message: `Invalid SKU: ${slugSku}` });
 	}
 	const apiSku: ApiSku = await apiRequest.json();
-	const device: Device = DomainMapper.toDomain(apiSku);
+	const device: PrimitiveOf<Device> = DomainMapper.toDomain(apiSku).toPrimitives();
 
 	return { device };
 };
