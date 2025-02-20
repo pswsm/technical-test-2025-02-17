@@ -50,6 +50,10 @@ export class CartState {
 			);
 		}
 	}
+
+	public toFormableData(): string {
+		return btoa(JSON.stringify(this.state.map((cd) => cd.getDevice().toPrimitives())));
+	}
 }
 
 export const GlobalCartState = new CartState();
