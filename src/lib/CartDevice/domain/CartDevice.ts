@@ -31,6 +31,10 @@ export class CartDevice {
 		return this.device.getDescription();
 	}
 
+	public getDevice(): Device {
+		return this.device;
+	}
+
 	public toPrimitives() {
 		return {
 			id: this.id.valueOf(),
