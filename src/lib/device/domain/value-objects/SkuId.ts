@@ -1,3 +1,3 @@
-import { ValueObject } from '$lib/shared/ValueObject';
+import { StringValueObject } from '$lib/shared/StringValueObject';
 
-export class SkuId extends ValueObject<string> {}
+export class SkuId extends StringValueObject {}
