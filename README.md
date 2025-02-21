@@ -1,3 +1,15 @@
+## To run
+`pnpm run dev`
+
+## Tests
+`pnpm test:unit`
+
+## About deployment
+Deployed on a pod (Podman, not k8s) on my webserver. See `Containerfile`.
+
+Feel free to ask for more info on it you are interested on the infra!
+
+------------------------------------
 <a id="readme-top"></a>
 
 
@@ -23,14 +35,14 @@
   </p>
 </div>
 
-¡Hola candidato! 
+¡Hola candidato!
 
 Desde AlexPhone, queremos apostar por actualizar y crear nuevas experiencias para nuestros clientes. Es por esto que desde negocio nos han pedido crear una nueva web e-commerce con la que deslumbrar a nuestros clientes. Para esta aplicación, nuestros compis de Back-End nos han preparado una API preparada para abastecernos con los datos que necesitamos. La estructura de la web será la siguiente:
 
   - Tendremos un layout con 2 partes principales.
     - Una barra de navegación superior, con el logo de AlexPhone a la izquierda, y a la derecha un botón que nos redirigirá al carrito de compra.
     - La sección principal, donde se mostrará la página actual.
-   
+
   - La página principal será una lista de iPhones que podamos comprar.
     - Se mostrará como una grid de elementos.
     - Cada elemento tendrá una imagen, un título, precio y sus características (color, grado y capacidad).
@@ -69,7 +81,7 @@ A nivel ténico, nuestro Project Manajer nos ha pasado algunos criterios sobre c
     ```
 
 ## Valores devueltos por la API:
-SKU: 
+SKU:
 ```javascript
 interface Sku {
   id: string
@@ -86,4 +98,4 @@ interface Sku {
 type SkuGrade = "excellent" | "very_good" | "good"
 type SkuColor = "white" | "black" | "red" | "pink"
 type SkuStorage = 64 | 128 | 256 | 512
-```  
+```
