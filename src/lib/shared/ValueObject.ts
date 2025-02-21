@@ -1,10 +1,10 @@
-import { ValueObjectError } from './ValueObjectError';
+import { InvalidValue } from './errors/InvalidValue';
 
-export class ValueObject<T> {
+export abstract class ValueObject<T> {
 	protected readonly value: T;
 	constructor(value: T) {
 		if (value == null || value == undefined) {
-			throw new ValueObjectError('InvalidValue', 'Value cannot be null');
+			throw new InvalidValue();
 		}
 		this.value = Object.freeze(value);
 	}
@@ -13,10 +13,5 @@ export class ValueObject<T> {
 		return this.value;
 	}
 
-	public equals(other: ValueObject<T>): boolean {
-		if (other === null || other === undefined) {
-			return false;
-		}
-		return this.value === other.valueOf();
-	}
+	public abstract equals(other: ValueObject<T>): boolean;
 }

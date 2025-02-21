@@ -1,11 +1,15 @@
 import { ValueObject } from './ValueObject';
-import { ValueObjectError } from './ValueObjectError';
+import { InvalidValue } from './errors/InvalidValue';
 
 export class StringValueObject extends ValueObject<string> {
 	constructor(value: string) {
 		if (value === '') {
-			throw new ValueObjectError('InvalidString', 'Invalid String provided');
+			throw new InvalidValue();
 		}
 		super(value);
+	}
+
+	public equals(other: ValueObject<string>): boolean {
+		return this.value === other.valueOf();
 	}
 }
