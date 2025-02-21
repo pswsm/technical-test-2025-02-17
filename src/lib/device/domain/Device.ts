@@ -17,7 +17,7 @@ export class Device {
 			new DeviceName(primitives.name),
 			new Description(primitives.description),
 			Specs.fromPrimitives(primitives.specs),
-			MarketplaceInformation.fromPrimirives(primitives.marketplaceInformation)
+			MarketplaceInformation.fromPrimitives(primitives.marketplaceInformation)
 		);
 	}
 	constructor(

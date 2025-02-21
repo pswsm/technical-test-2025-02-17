@@ -3,7 +3,7 @@ import { ImageLink } from './value-objects/ImageLink';
 import { Price } from './value-objects/Price';
 
 export class MarketplaceInformation {
-	public static fromPrimirives(
+	public static fromPrimitives(
 		primitives: PrimitiveOf<MarketplaceInformation>
 	): MarketplaceInformation {
 		return new MarketplaceInformation(new Price(primitives.price), new ImageLink(primitives.image));
