@@ -23,14 +23,14 @@
 			<SlideFilter
 				labelText={'From'}
 				minSlider={data.minPrice}
-				maxSlider={data.maxPrice}
+				maxSlider={toSlider}
 				paramBind={fromSlider}
 				filterName={'from'}
 				{form}
 			/>
 			<SlideFilter
 				labelText={'To'}
-				minSlider={data.minPrice}
+				minSlider={fromSlider}
 				maxSlider={data.maxPrice}
 				paramBind={toSlider}
 				filterName={'to'}
