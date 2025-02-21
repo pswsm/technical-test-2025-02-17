@@ -1,8 +1,8 @@
 <script lang="ts">
 	import Device from '$lib/components/Device.svelte';
+	import DoubleSyncSliders from '$lib/components/DoubleSyncSliders.svelte';
 	import Grid from '$lib/components/Grid.svelte';
 	import OptionsFilter from '$lib/components/OptionsFilter.svelte';
-	import SlideFilter from '$lib/components/SlideFilter.svelte';
 	import type { PageProps } from './$types';
 
 	let form: HTMLFormElement | undefined = $state();
@@ -17,23 +17,14 @@
 </svelte:head>
 <section id="main">
 	{#await data.devices}
-		<p>loading skus...</p>
+		<h1>Loading</h1>
 	{:then devices}
 		<form bind:this={form} class="flex w-full flex-wrap justify-around">
-			<SlideFilter
-				labelText={'From'}
-				minSlider={data.minPrice}
-				maxSlider={toSlider}
-				paramBind={fromSlider}
-				filterName={'from'}
-				{form}
-			/>
-			<SlideFilter
-				labelText={'To'}
-				minSlider={fromSlider}
-				maxSlider={data.maxPrice}
-				paramBind={toSlider}
-				filterName={'to'}
+			<DoubleSyncSliders
+				leftSliderValue={fromSlider}
+				rightSliderValue={toSlider}
+				minValue={data.minPrice}
+				maxValue={data.maxPrice}
 				{form}
 			/>
 			<OptionsFilter
