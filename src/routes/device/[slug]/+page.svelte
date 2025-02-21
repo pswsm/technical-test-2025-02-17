@@ -17,9 +17,9 @@
 
 <Toaster />
 <section id="device">
-	<div class="grid grid-cols-2 gap-x-4">
+	<div class="grid grid-cols-1 gap-4 md:grid-cols-2">
 		<div class="rounded-md border-2 border-white bg-white p-3">
-			<img src={device.getImage().valueOf()} alt="alt" />
+			<img src={device.getImage().valueOf()} alt="device" />
 		</div>
 		<div>
 			<h1 class="text-xl font-semibold">
