@@ -15,6 +15,9 @@
 	}
 </script>
 
+<svelte:head>
+	<title>{device.getName().valueOf()}</title>
+</svelte:head>
 <Toaster />
 <section id="device">
 	<div class="grid grid-cols-1 gap-4 md:grid-cols-2">

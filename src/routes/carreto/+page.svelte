@@ -10,6 +10,10 @@
 	}
 </script>
 
+<svelte:head>
+	<title>Cart</title>
+</svelte:head>
+
 {#if form?.status}
 	<p class="text-l text-center">Ordered correctly! - ID: {UniqueId.new().valueOf()}</p>
 {/if}
