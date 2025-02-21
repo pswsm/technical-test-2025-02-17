@@ -5,7 +5,7 @@ import { Specs } from '../domain/Specs';
 import { Description } from '../domain/value-objects/Description';
 import { DeviceName } from '../domain/value-objects/DeviceName';
 import { SkuId } from '../domain/value-objects/SkuId';
-import { MarketplaceInformationMother } from './MaretplaceMother';
+import { MarketplaceInformationMother } from './MarketplaceMother';
 import { SpecsMother } from './SpecsMother';
 
 export class DeviceMother {
