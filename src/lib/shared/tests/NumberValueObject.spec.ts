@@ -1,13 +1,32 @@
-import { expect, test } from 'vitest';
-import { ValueObject } from '../ValueObject';
+import { describe, expect, it } from 'vitest';
+import { NumberValueObject } from '../NumberValuObject';
 
-test('constructor', () => {
-	const vo = new ValueObject<number>(1);
+describe('NumberValueObject', () => {
+	describe('constructor', () => {
+		it('should create a new instance', () => {
+			expect(new NumberValueObject(10)).toMatchObject({ value: 10 });
+		});
+	});
 
-	expect(vo).toMatchObject({ value: 1 });
-});
+	describe('valueOf', () => {
+		it('should return the primitive value', () => {
+			const vo = new NumberValueObject(-20);
+			expect(vo.valueOf()).toEqual(-20);
+		});
+	});
 
-test('constructor on 0', () => {
-	const vo = new ValueObject<number>(0);
-	expect(vo).toMatchObject({ value: 0 });
+	describe('equals', () => {
+		it('should return true on equal', () => {
+			const vo2 = new NumberValueObject(1);
+			const vo1 = new NumberValueObject(1);
+
+			expect(vo1.equals(vo2)).toBeTruthy();
+		});
+		it('should return false on different', () => {
+			const vo2 = new NumberValueObject(2);
+			const vo1 = new NumberValueObject(1);
+
+			expect(vo1.equals(vo2)).toBeFalsy();
+		});
+	});
 });
