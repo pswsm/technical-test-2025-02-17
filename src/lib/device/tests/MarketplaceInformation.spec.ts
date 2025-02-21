@@ -2,7 +2,7 @@ import { describe, it, expect } from 'vitest';
 import { MarketplaceInformation } from '../domain/MarketplaceInformation';
 import { ImageLink } from '../domain/value-objects/ImageLink';
 import { Price } from '../domain/value-objects/Price';
-import { MarketplaceInformationMother } from '../mothers/MaretplaceMother';
+import { MarketplaceInformationMother } from '../mothers/MarketplaceMother';
 
 describe('MarketplaceInformation', () => {
 	const mother = new MarketplaceInformationMother();
